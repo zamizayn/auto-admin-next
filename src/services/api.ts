@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { useAuthStore } from '../store/useAuthStore';
+import axios from "axios";
+import { useAuthStore } from "../store/useAuthStore";
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: "https://autoadmin-api.akshikrm.com",
 });
 
 api.interceptors.request.use((config) => {
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     const token = useAuthStore.getState().token;
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
